@@ -176,26 +176,132 @@ namespace Adv01
             //How do you apply multiple constraints? Write an example. 
 
             //You can combine multiple constraints for a single type parameter,
-             //and have different constraints for different type parameters.
- 
-
-           /*
-            class Dog<T> where T : class, new()
-            {
-                public T Add()
-                {
-                    return new T();
-                }
-            }
-           */
-
-        #endregion
+            //and have different constraints for different type parameters.
 
 
+            /*
+             class Dog<T> where T : class, new()
+             {
+                 public T Add()
+                 {
+                     return new T();
+                 }
+             }
+            */
+
+            #endregion
 
 
 
 
+            #region Q13:
+            //What does the 'default' keyword do in generics?
+
+            //default(T) or default returns the default value for type 
+            //reference types: null
+            //value types: zero
+
+
+            #endregion
+
+
+            #region Q14:
+
+            //: Write a SafeList<T> that returns default when the index is invalid.
+
+            /*
+              internal class SafeList<T>
+              {
+                  private readonly List<T> _list = [];
+
+                  public void Add(T item) { _list.Add(item); }
+
+                  public T? GetItem(int index)
+                  {
+                      if (index < _list.Count)
+                          return _list[index];
+                      return default(T);
+                  }
+              }
+            */
+
+
+            #endregion
+
+
+            #region Q15:
+
+            //What is covariance? Explain the 'out' keyword.
+
+            //Covariance allows a  ref from a parent type to be assigned to a child type.
+            //The 'out' keyword is used to specify covariance  that only allows a type to be used as a return type
+            #endregion
+
+
+            #region Q16:
+
+
+            //What is contravariance? Explain the 'in' keyword.
+
+
+            //Contravariance allows a ref from a child type to be assigned to a parent type.
+            //The 'in' keyword is used to specify contravariance  that only allows a type to be used as a parameter type
+            #endregion
+
+
+            #region Q17:
+            //What is the difference between covariance and contravariance?
+
+            //Covariance (out)  ,Derived → Base , Output only(return)	
+            //Contravariance (in)  ,Base → Derived , Input only(parameter)
+
+
+            #endregion
+
+
+            #region Q18:
+            //How do static members work in generic types?
+
+            // Each closed generic type has its own copy of static fields
+
+
+            #endregion
+
+
+            #region Q19:
+
+            //How can you inherit from a generic class?
+
+            /*
+            Pattern 1: Inherit and Pass Type Parameter => Derived class is also generic
+            Pattern 2: Inherit with Concrete Type => Derived class specifies the type
+            Pattern 3: Add New Type Parameter => Derived class adds more type parameters
+            */
+            #endregion
+
+
+            #region Q20:
+
+            /*
+             Create a generic Cache<TKey, TValue>with Add, Get, Remove, Contains, and expiration support. 
+             */
+
+            // Cache class added
+
+
+           // Cache<int, string> TestCache = new();
+
+           // TestCache.Add(1, "v1", TimeSpan.FromMinutes(5));
+           // TestCache.Add(2, "v2",TimeSpan.FromSeconds(1));
+
+           // //Console.WriteLine(TestCache.Get(1));
+           //// Console.WriteLine(TestCache.Get(2));
+           // TestCache.Remove(2);
+           // Console.WriteLine(TestCache.Get(2));
+
+
+
+            #endregion
 
 
 
@@ -203,6 +309,14 @@ namespace Adv01
 
 
 
-    }
+
+
+
+
+
+
+
+
+        }
     }
 }
